@@ -1,0 +1,74 @@
+
+ACTIVIDAD1  2º TRIMESTRE  -  H L C
+___________________________________
+
+
+
+
+DESARROLLO DE UN SITIO WEB / WebApp con distintas páginas PHP/HTML, una Base de Datos (BBDD), usuarios, suscripciones, etc.
+
+
+1. Crear una BBDD sobre MI SITIO WEB que gestione operaciones contra la BBDD, que incluirá las siguientes entidades y relaciones: (1,5 ptos.)
+   -USUARIO: Persona registrada en mi sitio web. Debe guardar la información de la lista del apartado 3.
+   -PAGINA: Info sobre las paginas de mi sitio web.
+   -VISITA: Relación entre cada usuario y las páginas que visita en cada momento.
+   -SUSCRIPCION: Los distintos tipos de vinculación entre usuario y sitio web. Cada usuario solo apunta a un tipo de suscripción en cada momento.
+
+           - Figura del ERD - 
+
+2. En concreto, debe haber al menos las siguientes páginas PHP/HTML y archivos PHP: (1,5 ptos.)
+   a) Página de entrada: donde se da opción a registro y login de usuarios: index.php.
+   b) Página de registro/modificación de datos de usuarios: altamodif.php.
+   c) Página de formulario de inicio de sesión / login de usuarios (login.php): Vésase también el apartado 4.
+   d) Página de inicio/bienvenida (operativa solo con sesión iniciada): inicio.php.
+   e) Página de Contacto / Quiénes somos, accesible y operativa con o sin sesión iniciada (about.php): debe mostrar datos genéricos (no proceden de la BBDD) 
+      como nombre de la entidad, dirección, teléfomo y email, e incluir un mapa de localización incrustado (podéis usar el que os resulte más cómodo).
+   f) Página de ?? (operativa solo con sesión iniciada): ??.php.
+   g) conexion.php: contendrá código PHP para crear, gestionar y usar la conexion a la BBDD.
+
+           - Figuras con capturas de las páginas - 
+
+   Las páginas de d, e y f deben mostrar una especie de barra de navegación (en la parte del encabezado, que muestre el nombre del user logueado y 
+   una miniatura de su avatar, y todo su código en navbar.php) con links que permitan ir a los siguientes:  
+   -Página de b en modo modificación.
+   -Página de d.
+   -Página de e.
+   -Página de f.
+   -Página de cierre de sesión: al cerrar sesión manual o automáticamente, debe hacerse redirección a la página de a.
+
+
+3. Crear un formulario de registro de usuario (reutilizando el mismo para editar sus datos), que filtre y valide los datos introducidos y los vuelque 
+   sobre la BBDD: (1,5 ptos.)
+   -Nombre: mínimo 10 caracteres alfabéticos.
+   -Username: mínimo 8 caracteres alfanuméricos, el 1º solo puede ser una letra. 
+   -Password: mínimo 8 caracteres alfanuméricos/especiales. Al menos una letra mayúscula y un número.
+   -Sexo: con raddio button.
+   -Fecha Nacimiento: solo registro permitido a usuarios con al menos 16 años.
+   -Foto/avatar: posibilidad de que el usuario suba un archivo de tipo imagen (.jpg, .gif o .png). Si no lo hace, se le asigna uno por defecto según su sexo.
+   
+           - Figura con captura de form de ejemplo medio relleno -
+
+4. Al hacer login de usuario en login.php, hay que filtrar y validar los datos introducidos (username y password) contra la BBDD para poder abrir sesión en la WebApp.
+   Si algún dato no concordase con la información del usuario en la BBDD, mostrar el correspondiente mensaje de error y bloquear el acesso tras 3 intentos fallidos. (1 pto.)
+   
+           - Figura con capturas de login erróneo y contaje de intentos fallidos -
+
+   Además, idear/usar al menos un mecanismo de seguridad adicional que refuerce el procedimiento de validación de usuario + contraseña. Por ejemplo: captcha, 
+   exclusión por rango de direcciones IP con permiso, u otra que te parezca más adecuada. También hay que tener en cuenta de que no se debería poder 
+   visualizar las páginas de d, e ni f si las navegas directamente sin loguearte primero. (1 pto.)
+
+5. Una vez dentro de la WebApp, gestionar la sesión: iniciar su cierre automáticamente tras X minutos de inactividad  (informando antes al usuario por si quiere 
+   extenderla) y permitir cerrar sesión manualmente. Además, es necesario comprobar previamente si la sesión sige activa antes de realizar cualquier acción. (1 pto.)
+
+6. Mientras la la sesion esté activa, registrar mediante cookies:  (1 pto.)
+   - La página (de entre la d, e y f) que el usuario visita, de modo que cuando vuelva a iniciar sesión de nuevo se le lleve directamente a la página que figura 
+     en las cookies.
+   - La fecha y hora en que ocurrió el último cierre de sesión (manual o automático), de modo que cuando vuelva a iniciar sesión de nuevo se le indice en la lleve directamente a la página que figura 
+     en las cookies
+
+7. Se valorará el grado de reutilización de código para evitar la repetición innecesaria del mismo en base a: 
+   -Reutilización de una unica conexión a BBDD para ejecutar sentencias SQL. (0,5 ptos.)
+   -Cada rutina específica incluida en una función/método que devuelva el tipo de dato y valor que corresponda. (0,5 ptos.)
+   -Eficiencia y ahorro de código al usar funciones predefinidas en PHP. (0,5 ptos.)
+
+   También hay que evitar los mensajes por errores en la ejecución: sintaxis de código PHP, nulos, fallos por mala sintaxis o errores de integridad referencial de las setencias SQL, etc.
