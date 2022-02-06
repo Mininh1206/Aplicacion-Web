@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <?php
     require "inc/menu.html";
     ?>
@@ -17,6 +18,7 @@
     <script>
         $(document).foundation();
     </script>
+
 </body>
 
 </html>

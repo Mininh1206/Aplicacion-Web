@@ -3,28 +3,28 @@
 
 <head>
     <?php
-    include "inc/head.html";
+    require "inc/head.html";
     ?>
-    <title>Log in</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
     <?php
     include "inc/menu.html";
     ?>
-    <div style="margin: 5vh 35vw 0vh 35vw" class="aling-middle">
-        <form action="controlador/log.php" method="POST" class="log-in-form" >
-            <h4 class="text-center">Bienvenido</h4>
-            <label>Usuario
-                <input type="text" name="usuario" placeholder="Usuario">
-            </label>
-            <label>Password
-                <input type="password" name="contrasena" placeholder="Contraseña">
-            </label>
-            <input id="show-password" type="checkbox"><label for="ver-contraseña">Ver la contraseña</label>
-            <p><input type="submit" class="button expanded" value="Log in"></input></p>
-        </form>
-    </div>
+    
+    <form class="log-in-form" method="POST" action="functions/log.php">
+        <h4 class="text-center">Log in with you email account</h4>
+        <label>Usuario
+            <input type="text" placeholder="Usuario" name="usuario">
+        </label>
+        <label>Contraseña
+            <input type="password" placeholder="Contraseña" name="contrasena">
+        </label>
+        <input id="show-password" type="checkbox"><label for="show-passwor">Mostrar contraseña</label>
+        <p><input type="submit" class="button expanded" value="Log in"></input></p>
+        <p class="text-center"><a href="#">Forgot your password?</a></p>
+    </form>
 
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>
