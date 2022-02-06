@@ -8,7 +8,7 @@ if(!isset($usuario)){
 }else{
     echo "<h1>Inicio de sesion correcto $usuario <h1><br>" ;
 //Prueba de cierre de sesion
-    echo "<a href='controlador/exit.php'> Salir </a>";
+    echo "<a href='functions/exit.php'> Salir </a>";
 }
 
 

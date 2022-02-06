@@ -9,11 +9,13 @@
 
 <body>
 
-  <?php
-  require "inc/menu.html";
-  ?>
 
   <div class="fondo">
+
+    <?php
+    require "inc/menu.html";
+    ?>
+
     <div class="contenedor">
       <div class="row" id="content">
         <div class="medium-8 columns">
