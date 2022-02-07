@@ -3,6 +3,13 @@
 
 <head>
     <?php
+
+    session_start();
+
+    if(isset($_SESSION["IdUser"])){
+        header("location: index.php");
+    }
+
     require "inc/head.html";
     ?>
     <link rel="stylesheet" href="css/login.css">

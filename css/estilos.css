@@ -23,8 +23,7 @@ body{
 
 .contenedor {
   padding: 5vh 5vw 5vh 5vw;
-  background-color: var(--blanco);
+  background-color: rgba(226, 226, 226, .9);
   margin: 3vh 10vw 0 10vw;
   border-radius: 5px;
-  opacity: .9;
 }

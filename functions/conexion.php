@@ -1,6 +1,6 @@
 <?php
 
-$host ="25.53.166.65";
+$host ="localhost";
 $usuario = "root";
 $contraseña = "";
 $bd = "actividadphp";
