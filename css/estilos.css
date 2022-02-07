@@ -27,3 +27,7 @@ body{
   margin: 3vh 10vw 0 10vw;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 39.9375em) {
+
+}

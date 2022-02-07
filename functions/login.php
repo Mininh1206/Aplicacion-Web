@@ -1,6 +1,5 @@
 <?php
 require 'conexion.php';
-session_start();
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 //Hacemos la consulta y la ejecutamos
