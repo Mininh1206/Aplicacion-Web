@@ -3,17 +3,21 @@
 
 <head>
   <?php
+  require "functions/conexion.php";
+
   require "inc/head.html";
   ?>
 </head>
 
 <body>
 
-
   <div class="fondo">
-
     <?php
-    require "inc/menu.html";
+    if (!isset($_SESSION["IdUser"])) {
+      require "inc/menu.html";
+    } else {
+      require "inc/menuA.html";
+    }
     ?>
 
     <div class="contenedor">

@@ -1,7 +1,8 @@
 :root {
   --color-primario: #ff9e4e;
-  --negro: #444444;
+  --negro: #727272;
   --blanco: #e2e2e2;
+  --blanco-contenedor: #e2e2e2e0;
 }
 
 * {
@@ -19,12 +20,13 @@ body{
   background-size: cover;
   background-attachment: fixed;
   min-height: 100%;
+  position: absolute;
 }
 
 .contenedor {
   padding: 5vh 5vw 5vh 5vw;
-  background-color: rgba(226, 226, 226, .9);
-  margin: 3vh 10vw 0 10vw;
+  background-color: var(--blanco-contenedor);
+  margin: 100px 10vw 0 10vw;
   border-radius: 5px;
 }
 

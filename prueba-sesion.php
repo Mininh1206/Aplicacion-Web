@@ -1,7 +1,7 @@
 <?php
 //Prueba de que funciona
 session_start();
-$usuario = $_SESSION["usuario"];
+$usuario = $_SESSION["IdUser"];
 //Comprueba si hay una sesion iniciada si no es asi redirecciona al login para evitar el acceso si iniciar sesion
 if(!isset($usuario)){
     header("location: login.php");

@@ -4,3 +4,6 @@
   border-radius: 5px;
   margin: 10vh 20vw 10vh 20vw;
 }
+.error {
+  color: #FF0000;
+}

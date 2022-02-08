@@ -24,7 +24,7 @@
 
         <div class="contenedor">
             <form class="log-in-form" method="POST" action="functions/login.php">
-                <h4 class="text-center">Inicia sesion con tu usuario</h4>
+                <h4 class="text-center">Inicia sesión con tu usuario</h4>
                 <label>Usuario
                     <input type="text" placeholder="Usuario" name="usuario">
                 </label>
@@ -32,7 +32,7 @@
                     <input type="password" placeholder="Contraseña" name="contrasena">
                 </label>
                 <input id="show-password" type="checkbox"><label for="show-passwor">Mostrar contraseña</label>
-                <p><input type="submit" class="button expanded" value="Log in"></input></p>
+                <p><input type="submit" class="button expanded" value="Iniciar sesión"></input></p>
                 <p class="text-center"><a href="signin.php">¿No tienes cuenta aun?</a></p>
             </form>
         </div>
