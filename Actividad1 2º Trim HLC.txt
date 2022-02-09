@@ -4,14 +4,13 @@ ___________________________________
 
 
 
-
 DESARROLLO DE UN SITIO WEB / WebApp con distintas páginas PHP/HTML, una Base de Datos (BBDD), usuarios, suscripciones, etc.
 
 
 1. Crear una BBDD sobre MI SITIO WEB que gestione operaciones contra la BBDD, que incluirá las siguientes entidades y relaciones: (1,5 ptos.)
    -USUARIO: Persona registrada en mi sitio web. Debe guardar la información de la lista del apartado 3.
    -PAGINA: Info sobre las paginas de mi sitio web.
-   -VISITA: Relación entre cada usuario y las páginas que visita en cada momento.
+   -VISITA: Relación gentre cada usuario y las páginas que visita en cada momento.
    -SUSCRIPCION: Los distintos tipos de vinculación entre usuario y sitio web. Cada usuario solo apunta a un tipo de suscripción en cada momento.
 
            - Figura del ERD - 
@@ -23,8 +22,10 @@ DESARROLLO DE UN SITIO WEB / WebApp con distintas páginas PHP/HTML, una Base de
    d) Página de inicio/bienvenida (operativa solo con sesión iniciada): inicio.php.
    e) Página de Contacto / Quiénes somos, accesible y operativa con o sin sesión iniciada (about.php): debe mostrar datos genéricos (no proceden de la BBDD) 
       como nombre de la entidad, dirección, teléfomo y email, e incluir un mapa de localización incrustado (podéis usar el que os resulte más cómodo).
-   f) Página de ?? (operativa solo con sesión iniciada): ??.php.
+   f) Página de INDETERMINADA (operativa solo con sesión iniciada): tercera.php.
    g) conexion.php: contendrá código PHP para crear, gestionar y usar la conexion a la BBDD.
+
+    *INDETERMINADA: página con temática y contenido de tu libre elección 
 
            - Figuras con capturas de las páginas - 
 
@@ -32,7 +33,7 @@ DESARROLLO DE UN SITIO WEB / WebApp con distintas páginas PHP/HTML, una Base de
    una miniatura de su avatar, y todo su código en navbar.php) con links que permitan ir a los siguientes:  
    -Página de b en modo modificación.
    -Página de d.
-   -Página de e.
+   -Página de e: cuando estemos fuera de sesión basta con poner un link o botón que nos lleve a about.php.
    -Página de f.
    -Página de cierre de sesión: al cerrar sesión manual o automáticamente, debe hacerse redirección a la página de a.
 
@@ -58,17 +59,19 @@ DESARROLLO DE UN SITIO WEB / WebApp con distintas páginas PHP/HTML, una Base de
    visualizar las páginas de d, e ni f si las navegas directamente sin loguearte primero. (1 pto.)
 
 5. Una vez dentro de la WebApp, gestionar la sesión: iniciar su cierre automáticamente tras X minutos de inactividad  (informando antes al usuario por si quiere 
-   extenderla) y permitir cerrar sesión manualmente. Además, es necesario comprobar previamente si la sesión sige activa antes de realizar cualquier acción. (1 pto.)
+   extenderla) y permitir cerrar sesión manualmente. Además, es necesario comprobar previamente si la sesión sigue activa antes de realizar cualquier acción y, si no
+   lo está, debe redireccionar directamente a la página de entrada. (1 pto.)
 
 6. Mientras la la sesion esté activa, registrar mediante cookies:  (1 pto.)
    - La página (de entre la d, e y f) que el usuario visita, de modo que cuando vuelva a iniciar sesión de nuevo se le lleve directamente a la página que figura 
-     en las cookies.
-   - La fecha y hora en que ocurrió el último cierre de sesión (manual o automático), de modo que cuando vuelva a iniciar sesión de nuevo se le indice en la lleve directamente a la página que figura 
-     en las cookies
+     en las cookies (la ultima que visitó justo antes de cerrar sesión).
+   - La fecha y hora en que ocurrió el último cierre de sesión (manual o automático), de modo que cuando vuelva a iniciar sesión de nuevo se muestre al usuario 
+     la fecha y hora en que tuvo lugar su último acceso.
 
 7. Se valorará el grado de reutilización de código para evitar la repetición innecesaria del mismo en base a: 
    -Reutilización de una unica conexión a BBDD para ejecutar sentencias SQL. (0,5 ptos.)
    -Cada rutina específica incluida en una función/método que devuelva el tipo de dato y valor que corresponda. (0,5 ptos.)
    -Eficiencia y ahorro de código al usar funciones predefinidas en PHP. (0,5 ptos.)
 
-   También hay que evitar los mensajes por errores en la ejecución: sintaxis de código PHP, nulos, fallos por mala sintaxis o errores de integridad referencial de las setencias SQL, etc.
+   También hay que evitar los mensajes por errores en la ejecución: sintaxis de código PHP, nulos, fallos por mala sintaxis o errores de integridad referencial de 
+   las setencias SQL, etc.

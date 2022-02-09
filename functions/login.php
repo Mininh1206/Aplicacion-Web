@@ -17,7 +17,4 @@ if(isset($array[0])){
 
     header("location: ../index.php");
     
-}else{
-    //Datos incorrectos
-    echo "Datos incorrectos";
 }

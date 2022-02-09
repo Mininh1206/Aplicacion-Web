@@ -5,7 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idSus = $_POST["idSus"];
     $idUser = $_POST["idUser"];
 
-    mysqli_query($conexion, "update usuario set IdSus=$idSus where IdUser=$idUser");
+    if ($idUser!=1){
+        mysqli_query($conexion, "update usuario set IdSus=$idSus where IdUser=$idUser");
+    }
+    
     header("location: ../index.php");
 }
 ?>

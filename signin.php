@@ -4,9 +4,27 @@
 <head>
     <?php
     require "inc/head.html";
+
+    if (isset($_SESSION["IdUser"])) {
+        header("location: index.php");
+    }
+
     require "functions/conexion.php"
     ?>
     <link rel="stylesheet" href="css/login.css">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>
+    </script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI', {
+                    action: 'ejemplo'
+                })
+                .then(function(token) {
+                    var recaptchaResponse = document.getElementById('recaptchaResponse');
+                    recaptchaResponse.value = token;
+                });
+        });
+    </script>
 </head>
 
 <body>
@@ -17,7 +35,6 @@
         $nombre = $usuario = $contrasena = $contrasena2 = $fecha = $sexo = "";
         $errorNombre = $errorUsuario = $errorContrasena = $errorContrasena2 = $errorFecha = $errorSexo = "";
         $valido = true;
-        $imagen = true;
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -74,39 +91,48 @@
                 $fecha = $_POST["fecha"];
             }
 
-                try{
-                    $check = getimagesize($_FILES["myImage"]["tmp_name"]);   
-                    if ($check !== false) {
-                        $image = $_FILES['myImage']['tmp_name'];
-                        $imgContent = addslashes(file_get_contents($image));
-                    }
-                }catch (Exception){
-                    $imagen=false;
+            if (empty($_POST["sexo"])) { // Si esta vacío salta error
+                $errorSexo = "Selecciona un sexo";
+                $valido = false;
+            } else {
+                $sexo = $_POST["sexo"];
+            }
+
+
+            if ($_FILES['myImage']['name'] != null) {
+                echo "hola";
+                $check = getimagesize($_FILES["myImage"]["tmp_name"]);
+                if ($check !== false) {
+                    $image = $_FILES['myImage']['tmp_name'];
+                    $imgContent = addslashes(file_get_contents($image));
                 }
-                
-            
-            
-            $sexo = $_POST["sexo"];
+            } else {
+                if ($valido && !empty($_POST["sexo"])) {
+                    if ($sexo == 2) {
+                        $imgContent = addslashes(file_get_contents("res/img/usuario-mujer.png"));
+                    } else {
+                        $imgContent = addslashes(file_get_contents("res/img/usuario-hombre.png"));
+                    }
+                }
+            }
+
 
             if ($valido) {
-                //inserccion SQL
-                if($imagen){
+                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'; 
+                $recaptcha_secret = '6LdjI2seAAAAADfUwAPrFqnPYJTep4vTsnGdjBXa'; 
+                $recaptcha_response = $_POST['recaptcha_response']; 
+                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response); 
+                $recaptcha = json_decode($recaptcha); 
+                if($recaptcha->score >= 0.7){
                     if (mysqli_query($conexion, "INSERT INTO usuario (Nombre, Username, Password, FechaNac, Avatar, Sexo) VALUES ('$nombre', '$usuario', '$contrasena', '$fecha', '$imgContent', $sexo)")) {
                         header("location: login.php");
                     } else {
                         $errorUsuario = "Usuario duplicado";
                     }
-                }else{
-                    if (mysqli_query($conexion, "INSERT INTO usuario (Nombre, Username, Password, FechaNac, Sexo) VALUES ('$nombre', '$usuario', '$contrasena', '$fecha', $sexo)")) {
-                        header("location: login.php");
-                    } else {
-                        $errorUsuario = "Usuario duplicado";
-                    }
                 }
-                
             }
         }
-        
+
 
         function formatear($data)
         {
@@ -167,6 +193,7 @@
                     <label>Foto de perfil:
                         <input type="file" name="myImage" accept="image/*" />
                     </label>
+                    <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     <p><input type="submit" class="button expanded" value="Sign in"></input></p>
             </form>
         </div>
