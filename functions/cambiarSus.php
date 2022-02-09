@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idUser = $_POST["idUser"];
 
     if ($idUser!=1){
+        $_SESSION["IdSus"]=$idSus;
         mysqli_query($conexion, "update usuario set IdSus=$idSus where IdUser=$idUser");
     }
     
