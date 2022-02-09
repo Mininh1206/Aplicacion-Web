@@ -4,14 +4,27 @@
 <head>
     <?php
     require "functions/conexion.php";
-    
-    if(isset($_SESSION["IdUser"])){
+
+    if (isset($_SESSION["IdUser"])) {
         header("location: index.php");
     }
 
     require "inc/head.html";
     ?>
     <link rel="stylesheet" href="css/login.css">
+    <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>
+    </script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI', {
+                    action: 'ejemplo'
+                })
+                .then(function(token) {
+                    var recaptchaResponse = document.getElementById('recaptchaResponse');
+                    recaptchaResponse.value = token;
+                });
+        });
+    </script>
 </head>
 
 <body>
@@ -32,6 +45,7 @@
                     <input type="password" placeholder="Contraseña" name="contrasena">
                 </label>
                 <input id="show-password" type="checkbox"><label for="show-passwor">Mostrar contraseña</label>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <p><input type="submit" class="button expanded" value="Iniciar sesión"></input></p>
                 <p class="text-center"><a href="signin.php">¿No tienes cuenta aun?</a></p>
             </form>

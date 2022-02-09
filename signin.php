@@ -100,7 +100,6 @@
 
 
             if ($_FILES['myImage']['name'] != null) {
-                echo "hola";
                 $check = getimagesize($_FILES["myImage"]["tmp_name"]);
                 if ($check !== false) {
                     $image = $_FILES['myImage']['tmp_name'];

@@ -19,7 +19,9 @@
         <li>
           <?php echo $_SESSION["Nombre"] ?>
           <img class="avatar-user" src ="data:image/*;base64, <?php echo base64_encode($_SESSION['Avatar']); ?>">
-          <ul class="vertical menu" ></ul>
+          <ul class="vertical menu" >
+            <li><a href="functions/exit.php">Cerrar sesión</a></li>
+          </ul>
         </li>
       </ul>
     </div>
