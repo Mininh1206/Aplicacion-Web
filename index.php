@@ -16,10 +16,11 @@
     if (!isset($_SESSION["IdUser"])) {
       require "inc/menu.html";
     } else {
-      require "inc/menuA.html";
+      require "inc/menuA.php";
     }
+    
     ?>
-
+    
     <div class="contenedor">
       <div class="row" id="content">
         <div class="medium-8 columns">

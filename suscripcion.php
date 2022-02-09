@@ -12,12 +12,6 @@
         $idUser = $_SESSION["IdUser"];
     }
 
-    function cambiarSus($id, $idUser, $conexion)
-    {
-        $query = "update usuario set IdSus=$id where IdUser=$idUser";
-        mysqli_query($conexion, $query);
-    }
-
     require "inc/head.html";
     ?>
 
@@ -28,7 +22,7 @@
     <div class="fondo">
 
         <?php
-        require "inc/menuA.html";
+        require "inc/menuA.php";
 
         ?>
 
@@ -50,7 +44,11 @@
                         <p style='text-align:left; color:var(--blanco)'>{$row['Ventajas']}</p>
                     </div>
                     <div class='card-user-button'>
-                        <Seleccionar href='#' class='button' onclick='" . cambiarSus($row['IdSus'], $idUser, $conexion) . "'>Seleccionar</a>
+                        <form method='POST' action='functions/cambiarSus.php'>
+                            <input type='hidden' name='idUser' value='$idUser'/>
+                            <input type='hidden' name='idSus' value='{$row['IdSus']}'/>
+                            <input type='submit' class='button' value='Seleccionar'></input>
+                        </form>
                     </div>
                 </div>";
             }
