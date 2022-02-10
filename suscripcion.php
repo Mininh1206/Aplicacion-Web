@@ -37,11 +37,12 @@
                 echo
                 "<div class='card-user-container'>
                     <div class='card-user-avatar'>
-                        <img src='https://placehold.it/200x200' alt='' class='user-image'>
+                        <img src='data:image/*;base64,".base64_encode($row['Icono'])."' alt='{$row['NombreSus']}' class='user-image'>
                     </div>
                     <div class='card-user-bio'>
                         <h4 style='color:var(--blanco)'>{$row['NombreSus']}</h4>
                         <p style='text-align:left; color:var(--blanco)'>{$row['Ventajas']}</p>
+                        <p style='color:var(--color-primario)'>{$row['Precio']} €</p>
                     </div>
                     <div class='card-user-button'>
                         <form method='POST' action='functions/cambiarSus.php'>
@@ -54,6 +55,8 @@
             }
 
             ?>
+
+            
 
         </div>
     </div>

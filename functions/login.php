@@ -23,6 +23,8 @@ if($recaptcha->score >= 0.7){
     
         header("location: ../index.php");
         
+    }else{
+        header("location: ../login.php");
     }
 }else{
     header("location: ../login.php");

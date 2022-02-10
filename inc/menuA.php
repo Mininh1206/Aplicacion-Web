@@ -12,14 +12,19 @@
         <li><a href="index.php">Inicio</a></li>
         <li><a href="suscripcion.php">Suscripciones</a></li>
         <?php
-        if ($_SESSION['IdSus']==-1 || $_SESSION['IdSus']>0){
+        if ($_SESSION['IdSus'] == -1 || $_SESSION['IdSus'] > 0) {
           echo "<li><a href='ventajas.php'>Ventajas</a></li>";
         }
         ?>
         <li>
-          <?php echo $_SESSION["Nombre"] ?>
-          <img class="avatar-user" src ="data:image/*;base64, <?php echo base64_encode($_SESSION['Avatar']); ?>">
-          <ul class="vertical menu" >
+          <a href="#">
+            <?php echo $_SESSION["Nombre"] ?>
+            <img class="avatar-user" src="data:image/*;base64, <?php echo base64_encode($_SESSION['Avatar']); ?>">
+          </a>
+
+          <ul id="menu-perfil" class="dropdown menu" data-dropdown-menu>
+            <li></li>
+            <li><a href="perfil.php">Perfil</a></li>
             <li><a href="functions/exit.php">Cerrar sesión</a></li>
           </ul>
         </li>
@@ -27,4 +32,3 @@
     </div>
   </div>
 </nav>
-
