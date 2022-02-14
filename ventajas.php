@@ -36,25 +36,20 @@
             */
             ?>
 
-            <div class="row">
-                <div class="medium-6 columns medium-push-6">
-                    <img class="thumbnail" src="https://placehold.it/750x350">
-                </div>
+            <div class="contenedor_ventajas">
                 <?php
                 $ventajas =  explode("<br>", $resultado["Ventajas"]);
                 $nombre_ventajas = array("apadrina pingüino.", " de seguimiento.", "elige como donas.");
                 $num_ventaja = 0;
                 foreach ($ventajas as $ventaja) {
-                    echo "<div class='medium-6 columns medium-pull-6'>
-                        <h3>Ventaja $nombre_ventajas[$num_ventaja]</h3>
-                        <p>$ventaja sdfgfsdgfdfgdrgdfkgjdfkgkdfgkjdfsdfgffddffdsgdghfghdfkñghlgjlghjlfgjdlfgjdlkfgjdlkfgjdlkfgjdkljfgdkljfgdkljfgdkljfgdl</p>
-                    </div>";
+                    echo " <div style='margin:0 0.9vw;'> <h3>Ventaja $nombre_ventajas[$num_ventaja]</h3>
+                        <p>$ventaja</p> </div>";
                     $num_ventaja++;
                 }
-                echo " </div>";
                 ?>
-            </div>
+                </div>
 
+                <img class="thumbnail" style="display:block;margin: auto;" src="data:image/*;base64, <?php echo base64_encode($resultado['Icono']); ?>">
         </div>
     </div>
 

@@ -10,6 +10,6 @@ if(!isset($usuario)){
 //Prueba de cierre de sesion
     echo "<a href='functions/exit.php'> Salir </a>";
 }
-
+//$_SERVER['REQUEST_URI'] para saber la ruta
 
 ?>

@@ -1,37 +1,72 @@
 :root {
-  --color-primario: #ff9e4e;
-  --negro: #727272;
-  --blanco: #e2e2e2;
-  --blanco-contenedor: #e2e2e2e0;
+    --color-primario: #ff9e4e;
+    --negro: #727272;
+    --blanco: #e2e2e2;
+    --blanco-contenedor: #e2e2e2e0;
 }
 
 * {
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
-body{
-  overflow-y: scroll;
+body {
+    overflow-y: scroll;
 }
 
 .fondo {
-  background: url("../res/img/pinguino-emperador.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100%;
+    background: url("../res/img/pinguino-emperador.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
 }
 
 .contenedor {
-  padding: 5vh 5vw;
-  background-color: var(--blanco-contenedor);
-  margin: 25px 10vw 0 10vw;
-  border-radius: 5px;
+    padding: 5vh 5vw;
+    background-color: var(--blanco-contenedor);
+    margin: 25px 10vw 0 10vw;
+    border-radius: 5px;
 }
 
-.avatar-user{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 0 .5vw;
+.avatar-user {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 .5vw;
+}
+
+.perfil {
+
+    display: block;
+    margin: 0 15vw;
+}
+
+@media screen and (max-width: 43em) {
+    .perfil {
+      margin: 0 2vw;
+    }
+  }
+
+.avatarPerfil {
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+}
+
+.error {
+    color: #FF0000;
+}
+
+.contenedor_ventajas{
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 60em) {
+    .contenedor_ventajas{
+        display: inline-block;
+        justify-content: center;
+    }
 }

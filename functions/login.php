@@ -18,6 +18,9 @@ if($recaptcha->score >= 0.7){
         $_SESSION["IdUser"] = $array["IdUser"];
         $_SESSION["Nombre"] = $array["Nombre"];
         $_SESSION["Username"] = $array["Username"];
+        $_SESSION["Password"] = $array["Password"];
+        $_SESSION["Sexo"] = $array["Sexo"];
+        $_SESSION["FechaNac"] = $array["FechaNac"];
         $_SESSION["Avatar"] = $array["Avatar"];
         $_SESSION["IdSus"] = $array["IdSus"];
     

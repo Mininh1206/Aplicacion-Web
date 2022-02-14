@@ -1,9 +1,18 @@
 .log-in-form {
-  border: 1px solid #cacaca;
-  padding: 1rem;
-  border-radius: 5px;
-  margin: 10vh 20vw 10vh 20vw;
+    border: 1px solid #cacaca;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 10vh 15vw;
 }
-.error {
-  color: #FF0000;
+
+@media screen and (max-width: 59.9375em) {
+    .log-in-form {
+        margin: 8vh 10vw;
+    }
+}
+
+@media screen and (max-width: 49.9375em) {
+    .log-in-form {
+        margin: 5vh 5vw;
+    }
 }

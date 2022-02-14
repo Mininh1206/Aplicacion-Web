@@ -189,6 +189,7 @@
                     <input type="radio" name="sexo" <?php if (isset($sexo) && $sexo == "2") echo "checked"; ?> value="2" id="Mujer"><label for="Mujer">Mujer</label>
                     <input type="radio" name="sexo" <?php if (isset($sexo) && $sexo == "1") echo "checked"; ?> value="1" id="Hombre"><label for="Hombre">Hombre</label>
                     <input type="radio" name="sexo" <?php if (isset($sexo) && $sexo == "3") echo "checked"; ?> value="3" id="Otro"><label for="Otro">Otro</label>
+                    <span class="error"><?php echo $errorSexo; ?></span>
                     <label>Foto de perfil:
                         <input type="file" name="myImage" accept="image/*" />
                     </label>
