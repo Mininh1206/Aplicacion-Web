@@ -4,12 +4,12 @@
 <head>
     <?php
     require "inc/head.html";
-
+    require "functions/conexion.php";
     if (isset($_SESSION["IdUser"])) {
         header("location: index.php");
     }
-
-    require "functions/conexion.php"
+    
+   
     ?>
     <link rel="stylesheet" href="css/login.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>

@@ -23,8 +23,14 @@ if($recaptcha->score >= 0.7){
         $_SESSION["FechaNac"] = $array["FechaNac"];
         $_SESSION["Avatar"] = $array["Avatar"];
         $_SESSION["IdSus"] = $array["IdSus"];
-    
-        header("location: ../index.php");
+        if(isset($_COOKIE["pinguinolandia"])){//Si existe
+            header("location: {$_COOKIE["pinguinolandia"]}");
+        }else{
+            setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
+            header("location: ../index.php");
+        }
+       
+       
         
     }else{
         header("location: ../login.php");

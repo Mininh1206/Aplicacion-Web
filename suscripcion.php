@@ -10,9 +10,12 @@
         header("location: login.php");
     } else {
         $idUser = $_SESSION["IdUser"];
+        setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
+        insertar_visita(4,$_SESSION["IdUser"],$conexion);
     }
 
     require "inc/head.html";
+   
     ?>
 
     <link rel="stylesheet" href="css/suscripcion.css">

@@ -7,11 +7,14 @@
 
     if (!isset($_SESSION["IdUser"])) {
         header("location: login.php");
+    }else{
+        setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
+        insertar_visita(6,$_SESSION["IdUser"],$conexion);
     }
 
     require "inc/head.html";
 
-
+    
     ?>
 </head>
 

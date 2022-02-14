@@ -16,7 +16,9 @@
     if (!isset($_SESSION["IdUser"])) {
       require "inc/menu.html";
     } else {
+      setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
       require "inc/menuA.php";
+      insertar_visita(1,$_SESSION["IdUser"],$conexion);
     }
     
     ?>
