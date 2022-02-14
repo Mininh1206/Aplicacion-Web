@@ -9,8 +9,12 @@
         header("location: login.php");
     } else {
         $idSus = $_SESSION["IdSus"];
-        setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
-        insertar_visita(5,$_SESSION["IdUser"],$conexion);
+        if ($idSus>0 || $idSus==-1){
+            setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
+            insertar_visita(5,$_SESSION["IdUser"],$conexion);
+        }else{
+            header("location: suscripcion.php");
+        }
     }
 
     require "inc/head.html";
