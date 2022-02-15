@@ -1,21 +1,21 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require "functions/conexion.php";
 
     if (!isset($_SESSION["IdUser"])) {
         header("location: login.php");
     }else{
         setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
         insertar_visita(6,$_SESSION["IdUser"],$conexion);
-        require "functions/comprobarSesion.php";
+        require_once "functions/comprobarSesion.php";
     }
 
-    require "inc/head.html";
-
-    
+    require_once "inc/head.html";
     ?>
 </head>
 
@@ -193,9 +193,6 @@
             </div>
 
         </div>
-        <?php
-        require "inc/footer.html";
-        ?>
     </div>
     
 

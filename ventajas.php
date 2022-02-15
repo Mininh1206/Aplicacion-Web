@@ -1,9 +1,11 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require "functions/conexion.php";
 
     if (!isset($_SESSION["IdUser"])) {
         header("location: login.php");
@@ -15,10 +17,10 @@
         } else {
             header("location: suscripcion.php");
         }
-        require "functions/comprobarSesion.php";
+        require_once "functions/comprobarSesion.php";
     }
 
-    require "inc/head.html";
+    require_once "inc/head.html";
 
     ?>
 </head>
@@ -27,7 +29,7 @@
 
     <div class="fondo">
         <?php
-        require "inc/menuA.php";
+        require_once "inc/menuA.php";
         ?>
 
         <div class="contenedor">
@@ -59,10 +61,10 @@
 
             <img class="thumbnail" style="display:block;margin: auto;" src="data:image/*;base64, <?php echo base64_encode($resultado['Icono']); ?>">
         </div>
-        <?php
-        require "inc/footer.html";
-        ?>
     </div>
+    <?php
+    require_once "inc/footer.html";
+    ?>
 
 
 

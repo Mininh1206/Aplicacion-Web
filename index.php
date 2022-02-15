@@ -1,11 +1,12 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <?php
-  require "functions/conexion.php";
-
-  require "inc/head.html";
+  require_once "inc/head.html";
   ?>
 </head>
 
@@ -14,7 +15,7 @@
   <div class="fondo">
     <?php
     if (!isset($_SESSION["IdUser"])) {
-      require "inc/menu.html";
+      require_once "inc/menu.html";
     } else {
       header("location: inicio.php");
     }
@@ -36,10 +37,10 @@
         </div>
       </article>
     </div>
-    <?php
-    require "inc/footer.html";
-    ?>
   </div>
+  <?php
+  require_once "inc/footer.html";
+  ?>
 
   <script src="js/vendor/jquery-2.1.4.min.js"></script>
   <script src="js/vendor/foundation.js"></script>

@@ -1,10 +1,11 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-
-    require "functions/conexion.php";
 
     if (!isset($_SESSION["IdUser"])) {
         header("location: login.php");
@@ -12,10 +13,10 @@
         $idUser = $_SESSION["IdUser"];
         setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
         insertar_visita(4, $_SESSION["IdUser"], $conexion);
-        require "functions/comprobarSesion.php";
+        require_once "functions/comprobarSesion.php";
     }
 
-    require "inc/head.html";
+    require_once "inc/head.html";
 
     ?>
 
@@ -26,7 +27,7 @@
     <div class="fondo">
 
         <?php
-        require "inc/menuA.php";
+        require_once "inc/menuA.php";
 
         ?>
 
@@ -63,10 +64,10 @@
 
 
         </div>
-        <?php
-        require "inc/footer.html";
-        ?>
     </div>
+    <?php
+    require_once "inc/footer.html";
+    ?>
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>
     <script src="js/vendor/foundation.js"></script>

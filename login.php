@@ -1,15 +1,17 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require "functions/conexion.php";
 
     if (isset($_SESSION["IdUser"])) {
         header("location: index.php");
     }
 
-    require "inc/head.html";
+    require_once "inc/head.html";
     ?>
     <link rel="stylesheet" href="css/login.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>
@@ -32,7 +34,7 @@
     <div class="fondo">
 
         <?php
-        include "inc/menu.html";
+        require_once "inc/menu.html";
         ?>
 
         <div class="contenedor">
@@ -50,10 +52,6 @@
                 <p class="text-center"><a href="signin.php">¿No tienes cuenta aun?</a></p>
             </form>
         </div>
-
-        <?php
-        require "inc/footer.html";
-        ?>
     </div>
 
 

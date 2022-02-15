@@ -1,11 +1,12 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require "functions/conexion.php";
-
-    require "inc/head.html";
+    require_once "inc/head.html";
 
     ?>
 
@@ -17,12 +18,12 @@
     <div class="fondo">
         <?php
         if (!isset($_SESSION["IdUser"])) {
-            require "inc/menu.html";
+            require_once "inc/menu.html";
         } else {
-            require "functions/comprobarSesion.php";
+            require_once "functions/comprobarSesion.php";
             setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
             insertar_visita(8, $_SESSION["IdUser"], $conexion);
-            require "inc/menuA.php";
+            require_once "inc/menuA.php";
         }
 
         ?>
@@ -65,8 +66,7 @@
                     <button class="cancel-button" data-toggle="contact-panel">Cancelar</button>
                     <input type="submit" class="button submit-button" value="Enviar">
                 </div>
-            </form>
-           
+            </form> 
         </div>
 
         <script src="js/vendor/jquery-2.1.4.min.js"></script>

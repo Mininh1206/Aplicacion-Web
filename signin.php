@@ -1,10 +1,12 @@
+<?php
+require_once "functions/conexion.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require "inc/head.html";
-    require "functions/conexion.php";
+    require_once "inc/head.html";
     if (isset($_SESSION["IdUser"])) {
         header("location: index.php");
     }
@@ -30,7 +32,7 @@
 <body>
     <div class="fondo">
         <?php
-        include "inc/menu.html";
+        require_once "inc/menu.html";
 
         $nombre = $usuario = $contrasena = $contrasena2 = $fecha = $sexo = "";
         $errorNombre = $errorUsuario = $errorContrasena = $errorContrasena2 = $errorFecha = $errorSexo = "";
@@ -44,7 +46,7 @@
             } else {
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/([a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]{10})/", $nombre)) {
+                if (!preg_match("/([a-zA-ZáéíóúüñÁÉÍÓÚÜÑ ]{10})/", $nombre)) {
                     $errorNombre = "Minimo 10 caracteres";
                     $valido = false;
                 }
@@ -197,9 +199,6 @@
                     <p><input type="submit" class="button expanded" value="Sign in"></input></p>
             </form>
         </div>
-        <?php
-        require "inc/footer.html";
-        ?>
     </div>
 
 
