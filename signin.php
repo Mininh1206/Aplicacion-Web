@@ -44,7 +44,7 @@
             } else {
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/^[a-zA-Z-' ]{10}/", $nombre)) {
+                if (!preg_match("(^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ ]+${10}/", $nombre)) {
                     $errorNombre = "Minimo 10 caracteres";
                     $valido = false;
                 }

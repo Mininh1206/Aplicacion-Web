@@ -15,6 +15,7 @@
         }else{
             header("location: suscripcion.php");
         }
+        require "functions/comprobarSesion.php";
     }
 
     require "inc/head.html";

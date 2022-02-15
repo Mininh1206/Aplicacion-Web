@@ -27,6 +27,10 @@ body {
     background-color: var(--blanco-contenedor);
     margin: 25px 10vw 0 10vw;
     border-radius: 5px;
+    
+}
+.small{
+    color: var(--blanco);
 }
 
 .avatar-user {

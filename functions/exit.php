@@ -3,6 +3,6 @@
 session_start();
 //destruye la sesion
 session_destroy();
-header("location: ../login.php");
+header("location: login.php");
 exit();
 ?>

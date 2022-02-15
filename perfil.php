@@ -10,6 +10,7 @@
     }else{
         setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
         insertar_visita(6,$_SESSION["IdUser"],$conexion);
+        require "functions/comprobarSesion.php";
     }
 
     require "inc/head.html";
