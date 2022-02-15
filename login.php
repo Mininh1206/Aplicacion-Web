@@ -50,6 +50,10 @@
                 <p class="text-center"><a href="signin.php">¿No tienes cuenta aun?</a></p>
             </form>
         </div>
+
+        <?php
+        require "inc/footer.html";
+        ?>
     </div>
 
 

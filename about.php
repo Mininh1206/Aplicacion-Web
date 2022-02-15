@@ -19,10 +19,10 @@
         if (!isset($_SESSION["IdUser"])) {
             require "inc/menu.html";
         } else {
-            setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
-            require "inc/menuA.php";
-            insertar_visita(8, $_SESSION["IdUser"], $conexion);
             require "functions/comprobarSesion.php";
+            setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
+            insertar_visita(8, $_SESSION["IdUser"], $conexion);
+            require "inc/menuA.php";
         }
 
         ?>
@@ -41,8 +41,8 @@
                     </div>
                 </div>
             </article>
+            
         </div>
-
         <div class="contact-panel" id="contact-panel" data-toggler=".is-active">
             <a class="contact-panel-button" data-toggle="contact-panel">Contact us</a>
             <form method="GET" action="functions/mensajeAyuda.php">
@@ -66,6 +66,7 @@
                     <input type="submit" class="button submit-button" value="Enviar">
                 </div>
             </form>
+           
         </div>
 
         <script src="js/vendor/jquery-2.1.4.min.js"></script>

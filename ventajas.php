@@ -9,17 +9,17 @@
         header("location: login.php");
     } else {
         $idSus = $_SESSION["IdSus"];
-        if ($idSus>0 || $idSus==-1){
-            setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
-            insertar_visita(5,$_SESSION["IdUser"],$conexion);
-        }else{
+        if ($idSus > 0 || $idSus == -1) {
+            setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
+            insertar_visita(5, $_SESSION["IdUser"], $conexion);
+        } else {
             header("location: suscripcion.php");
         }
         require "functions/comprobarSesion.php";
     }
 
     require "inc/head.html";
-    
+
     ?>
 </head>
 
@@ -55,10 +55,13 @@
                     $num_ventaja++;
                 }
                 ?>
-                </div>
+            </div>
 
-                <img class="thumbnail" style="display:block;margin: auto;" src="data:image/*;base64, <?php echo base64_encode($resultado['Icono']); ?>">
+            <img class="thumbnail" style="display:block;margin: auto;" src="data:image/*;base64, <?php echo base64_encode($resultado['Icono']); ?>">
         </div>
+        <?php
+        require "inc/footer.html";
+        ?>
     </div>
 
 

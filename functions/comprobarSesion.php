@@ -8,6 +8,6 @@ $vida_session = time() - $_SESSION['Inactivo'];
 if ($vida_session > $inactivo) {
    require "exit.php";
 } else {  // si no ha caducado la sesion, actualizamos
-    $_SESSION['tiempo'] = time();
+    $_SESSION['Inactivo'] = time();
 }
 ?>

@@ -193,8 +193,11 @@
             </div>
 
         </div>
+        <?php
+        require "inc/footer.html";
+        ?>
     </div>
-
+    
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>
     <script src="js/vendor/foundation.js"></script>

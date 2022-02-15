@@ -8,8 +8,8 @@
     if (isset($_SESSION["IdUser"])) {
         header("location: index.php");
     }
-    
-   
+
+
     ?>
     <link rel="stylesheet" href="css/login.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>
@@ -44,7 +44,7 @@
             } else {
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
-                if (!preg_match("(^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ ]+${10}/", $nombre)) {
+                if (!preg_match("/([a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]{10})/", $nombre)) {
                     $errorNombre = "Minimo 10 caracteres";
                     $valido = false;
                 }
@@ -117,12 +117,12 @@
 
 
             if ($valido) {
-                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'; 
-                $recaptcha_secret = '6LdjI2seAAAAADfUwAPrFqnPYJTep4vTsnGdjBXa'; 
-                $recaptcha_response = $_POST['recaptcha_response']; 
-                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response); 
-                $recaptcha = json_decode($recaptcha); 
-                if($recaptcha->score >= 0.7){
+                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+                $recaptcha_secret = '6LdjI2seAAAAADfUwAPrFqnPYJTep4vTsnGdjBXa';
+                $recaptcha_response = $_POST['recaptcha_response'];
+                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+                if ($recaptcha->score >= 0.7) {
                     if (mysqli_query($conexion, "INSERT INTO usuario (Nombre, Username, Password, FechaNac, Avatar, Sexo) VALUES ('$nombre', '$usuario', '$contrasena', '$fecha', '$imgContent', $sexo)")) {
                         header("location: login.php");
                     } else {
@@ -197,6 +197,9 @@
                     <p><input type="submit" class="button expanded" value="Sign in"></input></p>
             </form>
         </div>
+        <?php
+        require "inc/footer.html";
+        ?>
     </div>
 
 

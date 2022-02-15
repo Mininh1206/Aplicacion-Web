@@ -10,13 +10,13 @@
         header("location: login.php");
     } else {
         $idUser = $_SESSION["IdUser"];
-        setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
-        insertar_visita(4,$_SESSION["IdUser"],$conexion);
+        setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
+        insertar_visita(4, $_SESSION["IdUser"], $conexion);
         require "functions/comprobarSesion.php";
     }
 
     require "inc/head.html";
-   
+
     ?>
 
     <link rel="stylesheet" href="css/suscripcion.css">
@@ -41,7 +41,7 @@
                 echo
                 "<div class='card-user-container'>
                     <div class='card-user-avatar'>
-                        <img src='data:image/*;base64,".base64_encode($row['Icono'])."' alt='{$row['NombreSus']}' class='user-image'>
+                        <img src='data:image/*;base64," . base64_encode($row['Icono']) . "' alt='{$row['NombreSus']}' class='user-image'>
                     </div>
                     <div class='card-user-bio'>
                         <h4 style='color:var(--blanco)'>{$row['NombreSus']}</h4>
@@ -60,9 +60,12 @@
 
             ?>
 
-            
+
 
         </div>
+        <?php
+        require "inc/footer.html";
+        ?>
     </div>
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>

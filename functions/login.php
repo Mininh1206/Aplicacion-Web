@@ -28,7 +28,7 @@ if($recaptcha->score >= 0.7){
             header("location: {$_COOKIE["pinguinolandia"]}");
         }else{
             setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
-            header("location: ../index.php");
+            header("location: ../inicio.php");
         }
        
        
