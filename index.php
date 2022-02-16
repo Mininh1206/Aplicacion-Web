@@ -1,12 +1,12 @@
 <?php
-require_once "functions/conexion.php";
+require "functions/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <?php
-  require_once "inc/head.html";
+  require "inc/head.html";
   ?>
 </head>
 
@@ -15,9 +15,13 @@ require_once "functions/conexion.php";
   <div class="fondo">
     <?php
     if (!isset($_SESSION["IdUser"])) {
-      require_once "inc/menu.html";
+      require "inc/menu.html";
     } else {
-      header("location: inicio.php");
+      //header("Location: https://proyecto-pinguinos.000webhostapp.com/inicio.php");
+      echo "<script>
+      window.location.replace('https://proyecto-pinguinos.000webhostapp.com/inicio.php');
+      </script>";
+      die();
     }
 
     ?>
@@ -39,7 +43,7 @@ require_once "functions/conexion.php";
     </div>
   </div>
   <?php
-  require_once "inc/footer.html";
+  require "inc/footer.html";
   ?>
 
   <script src="js/vendor/jquery-2.1.4.min.js"></script>

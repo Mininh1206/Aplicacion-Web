@@ -1,5 +1,5 @@
 <?php
-require_once "functions/conexion.php";
+require "functions/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,15 +8,19 @@ require_once "functions/conexion.php";
     <?php
 
     if (!isset($_SESSION["IdUser"])) {
-        header("location: login.php");
+        //header("location: login.php");
+        echo "<script>
+        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+        </script>";
+        die();
     } else {
         $idUser = $_SESSION["IdUser"];
         setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
         insertar_visita(4, $_SESSION["IdUser"], $conexion);
-        require_once "functions/comprobarSesion.php";
+        require "functions/comprobarSesion.php";
     }
 
-    require_once "inc/head.html";
+    require "inc/head.html";
 
     ?>
 
@@ -27,7 +31,7 @@ require_once "functions/conexion.php";
     <div class="fondo">
 
         <?php
-        require_once "inc/menuA.php";
+        require "inc/menuA.php";
 
         ?>
 
@@ -66,7 +70,7 @@ require_once "functions/conexion.php";
         </div>
     </div>
     <?php
-    require_once "inc/footer.html";
+    require "inc/footer.html";
     ?>
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>

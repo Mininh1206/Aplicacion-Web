@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require "conexion.php";
+    require_once "conexion.php";
 
     $idSus = $_POST["idSus"];
     $idUser = $_POST["idUser"];
@@ -10,6 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_query($conexion, "update usuario set IdSus=$idSus where IdUser=$idUser");
     }
     
-    header("location: ../index.php");
+    //header("location: ../index.php");
+    echo "<script>
+    window.location.replace('https://proyecto-pinguinos.000webhostapp.com/inicio.php');
+    </script>";
+    die();
 }
 ?>

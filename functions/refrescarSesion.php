@@ -10,5 +10,9 @@ $_SESSION["Sexo"] = $array["Sexo"];
 $_SESSION["FechaNac"] = $array["FechaNac"];
 $_SESSION["Avatar"] = $array["Avatar"];
 $_SESSION["IdSus"] = $array["IdSus"];
+echo "<script>
 
+            window.location.replace('https://proyecto-pinguinos.000webhostapp.com/perfil.php');
+
+            </script>";
 ?>

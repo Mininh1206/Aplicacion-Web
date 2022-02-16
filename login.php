@@ -1,5 +1,5 @@
 <?php
-require_once "functions/conexion.php";
+require "functions/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +8,14 @@ require_once "functions/conexion.php";
     <?php
 
     if (isset($_SESSION["IdUser"])) {
-        header("location: index.php");
+        //header("location: index.php");
+        echo "<script>
+        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/index.php');
+        </script>";
+        die();
     }
 
-    require_once "inc/head.html";
+    require "inc/head.html";
     ?>
     <link rel="stylesheet" href="css/login.css">
     <script src='https://www.google.com/recaptcha/api.js?render=6LdjI2seAAAAANHr5RKPZ2ycI9l3-wugm1qr-XHI'>
@@ -34,7 +38,8 @@ require_once "functions/conexion.php";
     <div class="fondo">
 
         <?php
-        require_once "inc/menu.html";
+        require "inc/menu.html";
+
         ?>
 
         <div class="contenedor">
@@ -46,10 +51,10 @@ require_once "functions/conexion.php";
                 <label>Contraseña
                     <input type="password" placeholder="Contraseña" name="contrasena">
                 </label>
-                <input id="show-password" type="checkbox"><label for="show-passwor">Mostrar contraseña</label>
+                <span class="error"><?php if (isset($_COOKIE["error"])) echo $_COOKIE["error"]; setcookie("error"); ?></span>
                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <p><input type="submit" class="button expanded" value="Iniciar sesión"></input></p>
-                <p class="text-center"><a href="signin.php">¿No tienes cuenta aun?</a></p>
+                <p class="text-center"><a href="signin.php">¿No tienes cuenta aún?</a></p>
             </form>
         </div>
     </div>

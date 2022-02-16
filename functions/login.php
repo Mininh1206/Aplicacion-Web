@@ -1,5 +1,5 @@
 <?php
-require 'conexion.php';
+require_once 'conexion.php';
 $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 //Hacemos la consulta y la ejecutamos
@@ -25,19 +25,37 @@ if($recaptcha->score >= 0.7){
         $_SESSION["IdSus"] = $array["IdSus"];
         $_SESSION["Inactivo"] = time();
         if(isset($_COOKIE["pinguinolandia"])){//Si existe
-            header("location: {$_COOKIE["pinguinolandia"]}");
+            //header("location: {$_COOKIE["pinguinolandia"]}");
+            echo "<script>
+            window.location.replace('{$_COOKIE["pinguinolandia"]}');
+            </script>";
+            die();
         }else{
             setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
-            header("location: ../inicio.php");
+            //header("location: ../inicio.php");
+            echo "<script>
+            window.location.replace('https://proyecto-pinguinos.000webhostapp.com/inicio.php');
+            </script>";
+            die();
         }
        
        
         
     }else{
-        header("location: ../login.php");
+        //header("location: ../login.php");
+        setcookie("error", "Usuario y/o contraseña incorrectos", time()+3000, "/");
+        echo "<script>
+        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+        </script>";
+        die();
     }
 }else{
-    header("location: ../login.php");
+    //header("location: ../login.php");
+    setcookie("error", "Usuario y/o contraseña incorrectos", time()+3000, "/");
+    echo "<script>
+    window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+    </script>";
+    die();
 }
 
 

@@ -1,14 +1,18 @@
 <?php
-require_once "functions/conexion.php";
+require "functions/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require_once "inc/head.html";
+    require "inc/head.html";
     if (isset($_SESSION["IdUser"])) {
-        header("location: index.php");
+        //header("location: index.php");
+        echo "<script>
+        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/index.php');
+        </script>";
+        die();
     }
 
 
@@ -32,7 +36,7 @@ require_once "functions/conexion.php";
 <body>
     <div class="fondo">
         <?php
-        require_once "inc/menu.html";
+        require "inc/menu.html";
 
         $nombre = $usuario = $contrasena = $contrasena2 = $fecha = $sexo = "";
         $errorNombre = $errorUsuario = $errorContrasena = $errorContrasena2 = $errorFecha = $errorSexo = "";
@@ -47,7 +51,7 @@ require_once "functions/conexion.php";
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
                 if (!preg_match("/([a-zA-ZáéíóúüñÁÉÍÓÚÜÑ ]{10})/", $nombre)) {
-                    $errorNombre = "Minimo 10 caracteres";
+                    $errorNombre = "Minimo 10 caracteres sin símbolos ni números";
                     $valido = false;
                 }
             }
@@ -59,7 +63,7 @@ require_once "functions/conexion.php";
                 $usuario = formatear($_POST["usuario"]);
                 // Revisa la integridad del texto
                 if (!preg_match("/([A-Z+ a-z+ 0-9]{8})/", $usuario)) {
-                    $errorUsuario = "Minimo 8 caracteres";
+                    $errorUsuario = "Minimo 8 caracteres sin símbolos";
                     $valido = false;
                 }
             }
@@ -87,7 +91,7 @@ require_once "functions/conexion.php";
                 $fecha_actual = strtotime(date("d-m-Y"));
                 $fecha_entrada = strtotime($_POST["fecha"] . "+ 16 year");
                 if ($fecha_actual < $fecha_entrada) {
-                    $errorFecha = "La edad minima son 16 años.";
+                    $errorFecha = "La edad mínima son 16 años.";
                     $valido = false;
                 }
                 $fecha = $_POST["fecha"];
@@ -125,8 +129,10 @@ require_once "functions/conexion.php";
                 $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
                 $recaptcha = json_decode($recaptcha);
                 if ($recaptcha->score >= 0.7) {
-                    if (mysqli_query($conexion, "INSERT INTO usuario (Nombre, Username, Password, FechaNac, Avatar, Sexo) VALUES ('$nombre', '$usuario', '$contrasena', '$fecha', '$imgContent', $sexo)")) {
-                        header("location: login.php");
+                    if (mysqli_query($conexion, "INSERT INTO `usuario` (`Nombre`, `Username`, `Password`, `Sexo`, `FechaNac`, `Avatar`, `IdSus`) VALUES ('$nombre', '$usuario', '$contrasena', '$sexo', '$fecha', '$imgContent', '0') ")) {
+                        echo "<script>
+                        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+                        </script> ";
                     } else {
                         $errorUsuario = "Usuario duplicado";
                     }

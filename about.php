@@ -1,12 +1,12 @@
 <?php
-require_once "functions/conexion.php";
+require "functions/conexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <?php
-    require_once "inc/head.html";
+    require "inc/head.html";
 
     ?>
 
@@ -18,12 +18,12 @@ require_once "functions/conexion.php";
     <div class="fondo">
         <?php
         if (!isset($_SESSION["IdUser"])) {
-            require_once "inc/menu.html";
+            require "inc/menu.html";
         } else {
-            require_once "functions/comprobarSesion.php";
+            require "functions/comprobarSesion.php";
             setcookie("pinguinolandia", $_SERVER["REQUEST_URI"]);
             insertar_visita(8, $_SESSION["IdUser"], $conexion);
-            require_once "inc/menuA.php";
+            require "inc/menuA.php";
         }
 
         ?>
