@@ -10,7 +10,7 @@ require "functions/conexion.php";
     if (!isset($_SESSION["IdUser"])) {
         //header("location: login.php");
         echo "<script>
-        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+        window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/login.php');
         </script>";
         die();
     } else {

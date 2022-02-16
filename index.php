@@ -20,7 +20,7 @@ setcookie("error", "", time()-1000000);
     } else {
       //header("Location: https://proyecto-pinguinos.000webhostapp.com/inicio.php");
       echo "<script>
-      window.location.replace('https://proyecto-pinguinos.000webhostapp.com/inicio.php');
+      window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/inicio.php');
       </script>";
       die();
     }

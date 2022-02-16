@@ -1,9 +1,9 @@
 <?php
 
 $host ="localhost";
-$usuario = "id18461553_root";
-$contraseña = "R8CivcNEB)!BTxy2tkFy";
-$bd = "id18461553_actividadphp";
+$usuario = "root";
+$contraseña = "";
+$bd = "actividadphp";
 //Crea una conexion con los parametros
 $conexion = mysqli_connect($host, $usuario,$contraseña,$bd);
 

@@ -1,5 +1,8 @@
 <?php
 require "functions/conexion.php";
+if (!isset($_COOKIE["intentos"])){
+    setcookie("intentos", 0, time()+5*60, "/");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +13,7 @@ require "functions/conexion.php";
     if (isset($_SESSION["IdUser"])) {
         //header("location: index.php");
         echo "<script>
-        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/index.php');
+        window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/index.php');
         </script>";
         die();
     }

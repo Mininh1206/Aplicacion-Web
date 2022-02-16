@@ -10,7 +10,7 @@ require "functions/conexion.php";
     if (isset($_SESSION["IdUser"])) {
         //header("location: index.php");
         echo "<script>
-        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/index.php');
+        window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/index.php');
         </script>";
         die();
     }
@@ -50,7 +50,7 @@ require "functions/conexion.php";
             } else {
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/([a-zA-ZáéíóúüñÁÉÍÓÚÜÑ ]{10})/", $nombre)) {
+                if (!preg_match("/^[A-ZÑÁÉÍÓÚÄËÏÖÜÀÈÌÔÙ][A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ ]{10,}$/", $nombre)) {
                     $errorNombre = "Minimo 10 caracteres sin símbolos ni números";
                     $valido = false;
                 }
@@ -62,7 +62,7 @@ require "functions/conexion.php";
             } else {
                 $usuario = formatear($_POST["usuario"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/([A-Z+ a-z+ 0-9]{8})/", $usuario)) {
+                if (!preg_match("/^[A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ][A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ0-9 ]{8,}$/", $usuario)) {
                     $errorUsuario = "Minimo 8 caracteres sin símbolos";
                     $valido = false;
                 }
@@ -131,7 +131,7 @@ require "functions/conexion.php";
                 if ($recaptcha->score >= 0.7) {
                     if (mysqli_query($conexion, "INSERT INTO `usuario` (`Nombre`, `Username`, `Password`, `Sexo`, `FechaNac`, `Avatar`, `IdSus`) VALUES ('$nombre', '$usuario', '$contrasena', '$sexo', '$fecha', '$imgContent', '0') ")) {
                         echo "<script>
-                        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+                        window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/login.php');
                         </script> ";
                     } else {
                         $errorUsuario = "Usuario duplicado";
@@ -173,7 +173,7 @@ require "functions/conexion.php";
         <div class="contenedor">
             <form class="log-in-form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
                 <h4 class="text-center">Registrate</h4>
-                <label>Nombre:
+                <label>Nombre completo:
                     <input type="text" placeholder="Nombre" name="nombre" value="<?php echo $nombre; ?>">
                     <span class="error"><?php echo $errorNombre; ?></span>
                 </label>

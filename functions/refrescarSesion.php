@@ -11,8 +11,6 @@ $_SESSION["FechaNac"] = $array["FechaNac"];
 $_SESSION["Avatar"] = $array["Avatar"];
 $_SESSION["IdSus"] = $array["IdSus"];
 echo "<script>
-
-            window.location.replace('https://proyecto-pinguinos.000webhostapp.com/perfil.php');
-
-            </script>";
+window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/perfil.php');
+</script>";
 ?>

@@ -14,46 +14,55 @@ $recaptcha_response = $_POST['recaptcha_response'];
 $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response); 
 $recaptcha = json_decode($recaptcha); 
 if($recaptcha->score >= 0.7){
-    if(isset($array[0])){
-        $_SESSION["IdUser"] = $array["IdUser"];
-        $_SESSION["Nombre"] = $array["Nombre"];
-        $_SESSION["Username"] = $array["Username"];
-        $_SESSION["Password"] = $array["Password"];
-        $_SESSION["Sexo"] = $array["Sexo"];
-        $_SESSION["FechaNac"] = $array["FechaNac"];
-        $_SESSION["Avatar"] = $array["Avatar"];
-        $_SESSION["IdSus"] = $array["IdSus"];
-        $_SESSION["Inactivo"] = time();
-        if(isset($_COOKIE["pinguinolandia"])){//Si existe
-            //header("location: {$_COOKIE["pinguinolandia"]}");
-            echo "<script>
-            window.location.replace('{$_COOKIE["pinguinolandia"]}');
-            </script>";
-            die();
+    $intentos = $_COOKIE["intentos"];
+    if($intentos < 3){
+        if(isset($array[0])){
+            $_SESSION["IdUser"] = $array["IdUser"];
+            $_SESSION["Nombre"] = $array["Nombre"];
+            $_SESSION["Username"] = $array["Username"];
+            $_SESSION["Password"] = $array["Password"];
+            $_SESSION["Sexo"] = $array["Sexo"];
+            $_SESSION["FechaNac"] = $array["FechaNac"];
+            $_SESSION["Avatar"] = $array["Avatar"];
+            $_SESSION["IdSus"] = $array["IdSus"];
+            $_SESSION["Inactivo"] = time();
+            if(isset($_COOKIE["pinguinolandia"])){//Si existe
+                //header("location: {$_COOKIE["pinguinolandia"]}");
+                echo "<script>
+                window.location.replace('http://$_SERVER[HTTP_HOST]".$_COOKIE["pinguinolandia"]."');
+                </script>";
+                die();
+            }else{
+                setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
+                //header("location: ../inicio.php");
+                echo "<script>
+                window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/inicio.php');
+                </script>";
+                die();
+            }
+        
+        
+            
         }else{
-            setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
-            //header("location: ../inicio.php");
+            //header("location: ../login.php");
+            setcookie("intentos", $intentos+1, time()+5*60, "/");
+            setcookie("error", "Usuario y/o contraseña incorrectos", time()+3000, "/");
             echo "<script>
-            window.location.replace('https://proyecto-pinguinos.000webhostapp.com/inicio.php');
+            window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/login.php');
             </script>";
             die();
         }
-       
-       
-        
-    }else{
-        //header("location: ../login.php");
-        setcookie("error", "Usuario y/o contraseña incorrectos", time()+3000, "/");
+    } else{
+        setcookie("error", "Demasiados intentos, espere 5 minutos", time()+5*60, "/");
         echo "<script>
-        window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+        window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/login.php');
         </script>";
         die();
     }
 }else{
     //header("location: ../login.php");
-    setcookie("error", "Usuario y/o contraseña incorrectos", time()+3000, "/");
     echo "<script>
-    window.location.replace('https://proyecto-pinguinos.000webhostapp.com/login.php');
+    window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/login.php');
     </script>";
     die();
 }

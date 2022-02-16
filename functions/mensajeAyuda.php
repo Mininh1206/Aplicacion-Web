@@ -6,7 +6,7 @@ mysqli_query($conexion, "INSERT INTO ayuda (Nombre, Email, Mensaje) VALUES ('{$_
 
 //header("location: ../about.php");
 echo "<script>
-window.location.replace('https://proyecto-pinguinos.000webhostapp.com/about.php');
+window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/about.php');
 </script>";
 die();
 
