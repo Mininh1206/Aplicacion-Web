@@ -51,14 +51,13 @@ require "functions/conexion.php";
                 <label>Contraseña
                     <input type="password" placeholder="Contraseña" name="contrasena">
                 </label>
-                <span class="error"><?php if (isset($_COOKIE["error"])) echo $_COOKIE["error"]; setcookie("error"); ?></span>
+                <span class="error"><?php if (isset($_COOKIE["error"])) echo $_COOKIE["error"]; ?></span>
                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <p><input type="submit" class="button expanded" value="Iniciar sesión"></input></p>
                 <p class="text-center"><a href="signin.php">¿No tienes cuenta aún?</a></p>
             </form>
         </div>
     </div>
-
 
     <script src="js/vendor/jquery-2.1.4.min.js"></script>
     <script src="js/vendor/foundation.js"></script>

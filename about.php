@@ -1,5 +1,6 @@
 <?php
 require "functions/conexion.php";
+setcookie("error", "", time()-1000000);
 ?>
 <!DOCTYPE html>
 <html lang="en">
