@@ -46,7 +46,7 @@ require "functions/conexion.php";
             } else {
                 $nombre = formatear($_POST["nombre"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/^[a-zA-Z-' ]{10}/", $nombre)) {
+                if (!preg_match("/^[A-ZÑÁÉÍÓÚÄËÏÖÜÀÈÌÔÙ][A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ ]{10,}$/", $nombre)) {
                     $errorNombre = "Minimo 10 caracteres";
                     $valido = false;
                 }
@@ -58,7 +58,7 @@ require "functions/conexion.php";
             } else {
                 $usuario = formatear($_POST["usuario"]);
                 // Revisa la integridad del texto
-                if (!preg_match("/([A-Z+ a-z+ 0-9]{8})/", $usuario)) {
+                if (!preg_match("/^[A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ][A-Za-zñÑáéíóúÁÉÍÓÚÄËÏÖÜäëïöüàèìòùÀÈÌÔÙ0-9 ]{8,}$/", $usuario)) {
                     $errorUsuario = "Minimo 8 caracteres";
                     $valido = false;
                 }
@@ -191,6 +191,9 @@ require "functions/conexion.php";
 
                     <p><input type="submit" class="button" value="Guardar cambios"></input></p>
 
+                </form>
+                <form action="functions/borrarUsuario.php" method="post">
+                <p><input type="submit" class="button" value="Dar de baja usuario"></input></p>
                 </form>
 
 
