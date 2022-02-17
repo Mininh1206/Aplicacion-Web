@@ -23,7 +23,7 @@ require "functions/conexion.php";
   } else {
       $idUser = $_SESSION["IdUser"];
       setcookie("pinguinolandia",$_SERVER["REQUEST_URI"]);
-      insertar_visita(4,$_SESSION["IdUser"],$conexion);
+      insertar_visita(1,$_SESSION["IdUser"],$conexion);
       require "functions/comprobarSesion.php";
       require "inc/menuA.php";
   } 
