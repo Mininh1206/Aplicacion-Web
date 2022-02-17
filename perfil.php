@@ -192,13 +192,10 @@ require "functions/conexion.php";
                     <p><input type="submit" class="button" value="Guardar cambios"></input></p>
 
                 </form>
-                <form action="functions/borrarUsuario.php" method="post">
-                <p><input type="submit" class="button" value="Dar de baja usuario"></input></p>
-                </form>
+                <button class="button" onclick="confirmar()">Dar de baja usuario</button>
 
 
             </div>
-
         </div>
     </div>
     
@@ -207,6 +204,12 @@ require "functions/conexion.php";
     <script src="js/vendor/foundation.js"></script>
     <script>
         $(document).foundation();
+
+        function confirmar(){
+            if (confirm("¿Está seguro de que desea borrar el usuario?")){
+                window.location.replace("functions/borrarUsuario.php");
+            }
+        }
     </script>
 
 </body>
