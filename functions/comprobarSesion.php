@@ -11,7 +11,7 @@ if ($vida_session > $inactivo) {
         if (confirm("Ha estado 10 minutos inactivo. ¿Quiere expandir la sesión?")){
             window.location.replace("functions/expandirSesion.php");
         } else{
-            window.location.replace("functions/exit.php");
+            window.location.replace("functions/exitI.php");
         }
     </script>
 <?php

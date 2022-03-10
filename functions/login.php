@@ -26,6 +26,13 @@ if($recaptcha->score >= 0.7){
             $_SESSION["Avatar"] = $array["Avatar"];
             $_SESSION["IdSus"] = $array["IdSus"];
             $_SESSION["Inactivo"] = time();
+
+            if (isset($_COOKIE["Modo"])){
+                echo "<script>
+                    alert('Último cierre de sesión ".$_COOKIE["Modo"]."')
+                </script>";
+              }
+
             if(isset($_COOKIE["pinguinolandia"])){//Si existe
                 //header("location: {$_COOKIE["pinguinolandia"]}");
                 echo "<script>
@@ -33,7 +40,7 @@ if($recaptcha->score >= 0.7){
                 </script>";
                 die();
             }else{
-                setcookie("pinguinolandia", "../index.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
+                setcookie("pinguinolandia", "http://$_SERVER[HTTP_HOST]/actividadphp/inicio.php", time() + (60 * 60 * 24 * 365), "/");//Por un año
                 //header("location: ../inicio.php");
                 echo "<script>
                 window.location.replace('http://$_SERVER[HTTP_HOST]/actividadphp/inicio.php');
